@@ -3,12 +3,11 @@ export const navLinks = [
   { label: 'Destinos', href: '#destinos' },
   { label: 'Storytelling', href: '#storytelling' },
   { label: 'Dados', href: '#dados' },
-  { label: 'Galeria', href: '#galeria' },
-  { label: 'Vozes', href: '#vozes' },
+  { label: 'Equipe', href: '#equipe' },
 ]
 
 export const heroContent = {
-  eyebrow: 'Especial multimídia de turismo',
+  eyebrow: 'Projeto acadêmico da turma de Jornalismo',
   headline: 'Ah, que bom!\nVocê chegou.\nBem vindo a Salvador!',
   subtitle:
     'Uma experiência editorial criada pela turma de Jornalismo para reunir matérias, entrevistas, dados e narrativas sobre custos do comércio, serviços e cultura no turismo contemporâneo.',
@@ -171,82 +170,51 @@ export const stats = [
   },
 ]
 
-export const galleryItems = [
+export const teamMembers = [
   {
-    id: 'g1',
-    title: 'Travessias e paisagens',
-    type: 'Foto',
-    image: '/imgs/elevador-lacerda.jpg',
-  },
-  {
-    id: 'g2',
-    title: 'Roteiros culturais',
-    type: 'Foto',
-    image: '/imgs/faroul-barra.jpg',
-  },
-  {
-    id: 'g3',
-    title: 'Encontros e memórias',
-    type: 'Entrevista',
-    image: '/imgs/pelourinho.jpg',
-  },
-  {
-    id: 'g4',
-    title: 'Arquitetura e patrimônio',
-    type: 'Foto',
-    image: '/imgs/senhor-bonfim.jpg',
-  },
-  {
-    id: 'g5',
-    title: 'Cozinhas e sabores',
-    type: 'Vídeo',
-    image: '/imgs/igreja.jpg',
-  },
-  {
-    id: 'g6',
-    title: 'Mapas e fluxos',
-    type: 'Infográfico',
-    image: '/imgs/itapua.jpg',
-  },
-]
-
-export const voices = [
-  {
-    id: 'v1',
-    name: 'Aline Souza',
-    role: 'Repórter de campo',
-    location: 'Paraty, RJ',
+    id: 't1',
+    name: 'Giuliana Farias',
+    role: 'Coordenação editorial',
+    affiliation: 'Laboratório de Jornalismo Digital',
     quote:
-      'O turismo aqui é feito de encontros. Cada visitante leva uma história e deixa outra.',
+      'Conectamos dados e histórias para traduzir o impacto do turismo na vida cotidiana.',
+    image: '/imgs/Giuliana%20Farias.png',
+    thumbnail: '/imgs/Giuliana%20Farias.png',
   },
   {
-    id: 'v2',
-    name: 'João Nascimento',
-    role: 'Morador e guia local',
-    location: 'Lençóis, BA',
+    id: 't2',
+    name: 'Guilherme Rios',
+    role: 'Pesquisa de campo',
+    affiliation: 'Equipe de reportagem',
     quote:
-      'Quando a comunidade participa, o turismo vira oportunidade real e sustentável.',
+      'Ouvir moradores e comerciantes é essencial para compreender custos e serviços no turismo.',
+    image: '/imgs/Guilherme_rios.png',
+    thumbnail: '/imgs/Guilherme_rios.png',
   },
   {
-    id: 'v3',
-    name: 'Carla Menezes',
-    role: 'Pesquisadora',
-    location: 'Manaus, AM',
+    id: 't3',
+    name: 'Mirela Portela',
+    role: 'Análise de dados',
+    affiliation: 'Núcleo de dados',
     quote:
-      'Os dados mostram que o turismo pode fortalecer economias locais se houver planejamento.',
+      'Os indicadores ajudam a revelar como comércio, serviços e cultura se conectam.',
+    image: '/imgs/Mirela%20Portela.png',
+    thumbnail: '/imgs/Mirela%20Portela.png',
   },
   {
-    id: 'v4',
-    name: 'Rafael Pereira',
-    role: 'Jornalista',
-    location: 'Ouro Preto, MG',
+    id: 't4',
+    name: 'Pérola Lins',
+    role: 'Narrativas visuais',
+    affiliation: 'Direção de arte',
     quote:
-      'Narrar patrimônio é mostrar como passado e presente dialogam no cotidiano das cidades.',
+      'Transformamos entrevistas e imagens em uma experiência visual clara e sensível.',
+    image: '/imgs/P%C3%A9rola%20Lins.png',
+    thumbnail: '/imgs/P%C3%A9rola%20Lins.png',
   },
 ]
 
 export const footerInfo = {
   project: 'Projeto acadêmico da turma de Jornalismo',
-  credits: 'Universidade | Laboratório de Jornalismo Digital',
+  credits: 'Universidade | UCSAL',
   year: new Date().getFullYear(),
 }

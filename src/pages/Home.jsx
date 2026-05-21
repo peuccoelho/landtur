@@ -3,7 +3,6 @@ import About from '../sections/About.jsx'
 import Cta from '../sections/Cta.jsx'
 import Destinations from '../sections/Destinations.jsx'
 import Footer from '../sections/Footer.jsx'
-import Gallery from '../sections/Gallery.jsx'
 import Hero from '../sections/Hero.jsx'
 import Stats from '../sections/Stats.jsx'
 import Storytelling from '../sections/Storytelling.jsx'
@@ -19,7 +18,6 @@ export default function Home() {
         <Destinations />
         <Storytelling />
         <Stats />
-        <Gallery />
         <Voices />
         <Cta />
       </main>

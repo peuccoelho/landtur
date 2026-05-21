@@ -47,18 +47,7 @@ export default function Hero() {
             {heroContent.subtitle}
           </p>
         </Reveal>
-        <Reveal delay={0.3}>
-          <div className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-sand-100/70">
-            {heroContent.highlights.map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-white/20 px-4 py-2"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </Reveal>
+        
         <Reveal delay={0.4}>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button href="#destinos" variant="primary">
