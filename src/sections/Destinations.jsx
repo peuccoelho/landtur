@@ -61,9 +61,9 @@ export default function Destinations() {
       <Container>
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
-            eyebrow="Destinos em destaque"
-            title="Matérias prontas para receber conteúdos dinâmicos"
-            subtitle="Narrativa editorial com navegação interativa e espaço para imagens imersivas."
+            eyebrow="Eixos de análise"
+            title="Pautas guiadas por dados públicos e entrevista"
+            subtitle="Comércio, serviços e cultura aparecem como recortes para leitura crítica do turismo."
           />
           <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-ink-600">
             {destinationFilters.map((filter) => (
@@ -162,8 +162,8 @@ export default function Destinations() {
                 </div>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Button variant="ghost" href="#cta">
-                    Ler matéria
+                  <Button variant="ghost" href="#storytelling">
+                    Ler análise
                     <ArrowUpRight size={16} />
                   </Button>
                   <div className="flex items-center gap-3">

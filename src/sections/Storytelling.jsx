@@ -85,9 +85,9 @@ export default function Storytelling() {
       <Container>
         <SectionHeading
           align="center"
-          eyebrow="Storytelling visual"
-          title="Narrativas imersivas em camadas visuais"
-          subtitle="Arraste, role e explore imagens que ativam trechos editoriais e dados de contexto."
+          eyebrow="Fontes de informação"
+          title="Bases públicas e entrevista em camadas visuais"
+          subtitle="Arraste, role e explore conteúdos que conectam indicadores e falas da gestão."
           className="max-w-3xl"
         />
 

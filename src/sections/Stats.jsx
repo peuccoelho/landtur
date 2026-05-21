@@ -3,62 +3,36 @@ import Container from '../components/Container.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 
 const dataByPeriod = {
-  'Últimos 3 meses': {
-    dates: [
-      '01 Jun',
-      '03 Jun',
-      '05 Jun',
-      '07 Jun',
-      '09 Jun',
-      '12 Jun',
-      '15 Jun',
-      '18 Jun',
-      '21 Jun',
-      '24 Jun',
-      '27 Jun',
-      '30 Jun',
-    ],
-    mobile: [290, 270, 310, 280, 260, 350, 320, 340, 400, 370, 420, 480],
-    desktop: [200, 180, 220, 255, 230, 280, 260, 270, 300, 285, 310, 320],
-    peak: 480,
-    average: 315,
-    growth: '+15%',
-  },
-  'Últimos 30 dias': {
-    dates: [
-      '01 Jun',
-      '03 Jun',
-      '05 Jun',
-      '07 Jun',
-      '09 Jun',
-      '12 Jun',
-      '15 Jun',
-      '18 Jun',
-      '21 Jun',
-      '24 Jun',
-      '27 Jun',
-      '30 Jun',
-    ],
-    mobile: [290, 270, 310, 280, 260, 350, 320, 340, 400, 370, 420, 480],
-    desktop: [200, 180, 220, 255, 230, 280, 260, 270, 300, 285, 310, 320],
-    peak: 480,
-    average: 315,
+  '2019–2024': {
+    dates: ['2019', '2020', '2021', '2022', '2023', '2024'],
+    commerce: [120, 95, 110, 140, 160, 175],
+    services: [90, 80, 95, 120, 138, 150],
+    peak: 175,
+    average: 131,
     growth: '+12%',
   },
-  'Últimos 7 dias': {
-    dates: ['24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun'],
-    mobile: [370, 420, 380, 450, 480, 520, 550],
-    desktop: [285, 310, 295, 340, 320, 365, 380],
-    peak: 550,
-    average: 458,
-    growth: '+18%',
+  '2022–2024': {
+    dates: ['1º sem/22', '2º sem/22', '1º sem/23', '2º sem/23', '1º sem/24', '2º sem/24'],
+    commerce: [140, 150, 155, 162, 170, 182],
+    services: [120, 128, 135, 142, 150, 160],
+    peak: 182,
+    average: 148,
+    growth: '+9%',
+  },
+  '2024 (parcial)': {
+    dates: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+    commerce: [158, 162, 170, 175, 180, 188],
+    services: [140, 145, 150, 155, 162, 168],
+    peak: 188,
+    average: 162,
+    growth: '+6%',
   },
 }
 
 const periods = [
-  { label: 'Últimos 3 meses', size: '2,32 KB', color: 'bg-sage-500' },
-  { label: 'Últimos 30 dias', size: '1,45 KB', color: 'bg-ocean-500' },
-  { label: 'Últimos 7 dias', size: '0,89 KB', color: 'bg-sand-500' },
+  { label: '2019–2024', size: '6 séries', color: 'bg-sage-500' },
+  { label: '2022–2024', size: '4 séries', color: 'bg-ocean-500' },
+  { label: '2024 (parcial)', size: '2 séries', color: 'bg-sand-500' },
 ]
 
 const generateSmoothPath = (values, maxValue, height = 320, isArea = false) => {
@@ -99,13 +73,14 @@ const generateSmoothPath = (values, maxValue, height = 320, isArea = false) => {
 }
 
 export default function Stats() {
-  const [selectedPeriod, setSelectedPeriod] = useState('Últimos 30 dias')
+  const [selectedPeriod, setSelectedPeriod] = useState('2022–2024')
   const [hoveredPoint, setHoveredPoint] = useState(null)
   const [animationPhase, setAnimationPhase] = useState(0)
   const [chartVisible, setChartVisible] = useState(false)
 
   const currentData = dataByPeriod[selectedPeriod]
-  const maxValue = Math.max(...currentData.mobile, ...currentData.desktop) * 1.1
+  const maxValue =
+    Math.max(...currentData.commerce, ...currentData.services) * 1.1
 
   useEffect(() => {
     setChartVisible(false)
@@ -126,19 +101,19 @@ export default function Stats() {
       label: 'Pico',
       value: currentData.peak,
       color: 'border-ocean-400',
-      size: '0,25 KB',
+      size: 'registros',
     },
     {
       label: 'Média',
       value: currentData.average,
       color: 'border-sand-500',
-      size: '0,24 KB',
+      size: 'registros',
     },
     {
-      label: 'Crescimento',
+      label: 'Variação',
       value: currentData.growth,
       color: 'border-sage-500',
-      size: '0,16 KB',
+      size: 'período',
     },
   ]
 
@@ -146,9 +121,9 @@ export default function Stats() {
     <section id="dados" className="bg-white py-20 sm:py-24">
       <Container>
         <SectionHeading
-          eyebrow="Curiosidades e dados"
-          title="Indicadores que contextualizam o turismo"
-          subtitle="Números animados e insights visuais para enriquecer a narrativa jornalística."
+          eyebrow="Dados públicos"
+          title="Indicadores de turismo, comércio e cultura"
+          subtitle="Séries históricas e comparativos para sustentar as reportagens."
         />
         <div className="mt-12 rounded-3xl bg-white p-6 shadow-soft md:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -158,14 +133,14 @@ export default function Stats() {
                   animationPhase >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
                 }`}
               >
-                Tráfego total por canal
+                Comércio e serviços turísticos
               </h3>
               <p
                 className={`text-sm text-ink-500 transition-all duration-700 delay-150 ${
                   animationPhase >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
                 }`}
               >
-                Comparativo entre acessos mobile e desktop
+                Comparativo entre indicadores públicos por período
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -193,16 +168,16 @@ export default function Stats() {
             <div className="flex flex-wrap items-center gap-6 text-sm text-ink-600">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-ocean-600" />
-                <span className="font-medium">Mobile</span>
+                <span className="font-medium">Comércio</span>
                 <span className="text-ink-900">
-                  {currentData.mobile[currentData.mobile.length - 1]}
+                  {currentData.commerce[currentData.commerce.length - 1]}
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-ink-700" />
-                <span className="font-medium">Desktop</span>
+                <span className="font-medium">Serviços</span>
                 <span className="text-ink-900">
-                  {currentData.desktop[currentData.desktop.length - 1]}
+                  {currentData.services[currentData.services.length - 1]}
                 </span>
               </div>
             </div>
@@ -227,7 +202,7 @@ export default function Stats() {
                 <rect width="800" height="360" fill="url(#data-grid)" />
 
                 <path
-                  d={generateSmoothPath(currentData.desktop, maxValue, 320, true)}
+                  d={generateSmoothPath(currentData.services, maxValue, 320, true)}
                   fill="rgba(61, 65, 75, 0.08)"
                   className={`transition-all duration-[1600ms] ${
                     chartVisible ? 'opacity-100' : 'opacity-0'
@@ -238,7 +213,7 @@ export default function Stats() {
                   }}
                 />
                 <path
-                  d={generateSmoothPath(currentData.mobile, maxValue, 320, true)}
+                  d={generateSmoothPath(currentData.commerce, maxValue, 320, true)}
                   fill="rgba(28, 116, 177, 0.12)"
                   className={`transition-all duration-[1600ms] ${
                     chartVisible ? 'opacity-100' : 'opacity-0'
@@ -251,7 +226,7 @@ export default function Stats() {
                 />
 
                 <path
-                  d={generateSmoothPath(currentData.desktop, maxValue, 320)}
+                  d={generateSmoothPath(currentData.services, maxValue, 320)}
                   fill="none"
                   stroke="#3d414b"
                   strokeWidth="2.5"
@@ -266,7 +241,7 @@ export default function Stats() {
                   }}
                 />
                 <path
-                  d={generateSmoothPath(currentData.mobile, maxValue, 320)}
+                  d={generateSmoothPath(currentData.commerce, maxValue, 320)}
                   fill="none"
                   stroke="#1c74b1"
                   strokeWidth="2.5"
@@ -288,17 +263,18 @@ export default function Stats() {
                   const x =
                     padding +
                     (index / (currentData.dates.length - 1)) * chartWidth
-                  const mobileY =
-                    padding + (1 - currentData.mobile[index] / maxValue) * chartHeight
-                  const desktopY =
+                  const commerceY =
                     padding +
-                    (1 - currentData.desktop[index] / maxValue) * chartHeight
+                    (1 - currentData.commerce[index] / maxValue) * chartHeight
+                  const servicesY =
+                    padding +
+                    (1 - currentData.services[index] / maxValue) * chartHeight
 
                   return (
                     <g key={date}>
                       <circle
                         cx={x}
-                        cy={desktopY}
+                        cy={servicesY}
                         r={hoveredPoint === index ? 5 : 3}
                         fill="#3d414b"
                         className={`transition-all duration-500 ${
@@ -310,7 +286,7 @@ export default function Stats() {
                       />
                       <circle
                         cx={x}
-                        cy={mobileY}
+                        cy={commerceY}
                         r={hoveredPoint === index ? 5 : 3}
                         fill="#1c74b1"
                         className={`transition-all duration-500 ${
@@ -384,7 +360,7 @@ export default function Stats() {
                       fontSize="11"
                       fontWeight="600"
                     >
-                      Mobile: {currentData.mobile[hoveredPoint]}
+                      Comércio: {currentData.commerce[hoveredPoint]}
                     </text>
                     <text
                       x={56 + (hoveredPoint / (currentData.dates.length - 1)) * 688}
@@ -394,7 +370,7 @@ export default function Stats() {
                       fontSize="11"
                       fontWeight="600"
                     >
-                      Desktop: {currentData.desktop[hoveredPoint]}
+                      Serviços: {currentData.services[hoveredPoint]}
                     </text>
                   </g>
                 )}
@@ -434,10 +410,10 @@ export default function Stats() {
             >
               <div className="flex items-center justify-between gap-6">
                 <span className="uppercase tracking-[0.2em] text-sand-200/70">
-                  Alcance total
+                  Registros consolidados
                 </span>
                 <span className="font-semibold text-white">
-                  {currentData.peak + currentData.average} visitas
+                  {currentData.peak + currentData.average} registros
                 </span>
               </div>
               <div className="mt-3 h-2 w-48 overflow-hidden rounded-full bg-ink-700">

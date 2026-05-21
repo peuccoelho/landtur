@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar.jsx'
 import About from '../sections/About.jsx'
-import Cta from '../sections/Cta.jsx'
 import Destinations from '../sections/Destinations.jsx'
 import Footer from '../sections/Footer.jsx'
 import Hero from '../sections/Hero.jsx'
@@ -19,7 +18,6 @@ export default function Home() {
         <Storytelling />
         <Stats />
         <Voices />
-        <Cta />
       </main>
       <Footer />
     </div>

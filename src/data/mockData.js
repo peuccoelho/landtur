@@ -1,106 +1,107 @@
 export const navLinks = [
   { label: 'Projeto', href: '#sobre' },
-  { label: 'Destinos', href: '#destinos' },
+  { label: 'Eixos', href: '#destinos' },
   { label: 'Storytelling', href: '#storytelling' },
   { label: 'Dados', href: '#dados' },
   { label: 'Equipe', href: '#equipe' },
 ]
 
 export const heroContent = {
-  eyebrow: 'Projeto acadêmico da turma de Jornalismo',
-  headline: 'Ah, que bom!\nVocê chegou.\nBem vindo a Salvador!',
+  eyebrow: 'Dados públicos + entrevista exclusiva',
+  headline: 'Ah, que bom!\nVocê chegou.\nBem-vindo a Salvador.',
   subtitle:
-    'Uma experiência editorial criada pela turma de Jornalismo para reunir matérias, entrevistas, dados e narrativas sobre custos do comércio, serviços e cultura no turismo contemporâneo.',
-  highlights: ['Custos do comércio', 'Serviços turísticos', 'Cultura no turismo'],
+    'Um especial jornalístico baseado em bases públicas de turismo e uma entrevista em profundidade com o secretário de turismo.',
+  highlights: ['Bases públicas de turismo', 'Comércio e serviços', 'Entrevista com o secretário'],
   image: '/imgs/salvador-principal.jpg',
-  primaryCta: 'Ver reportagens',
-  secondaryCta: 'Conhecer o projeto',
+  primaryCta: 'Explorar análises',
+  secondaryCta: 'Ver metodologia',
 }
 
 export const aboutContent = {
-  label: 'Projeto em foco',
-  title: 'Turismo em Foco: narrativas jornalísticas sobre viagens e territórios',
+  label: 'Fontes e método',
+  title: 'Dados públicos e entrevista para entender o turismo local',
   description:
-    'A proposta é construir um portal informativo que aborda custos do comércio, serviços e cultura no turismo, conectando destinos, culturas e pessoas por meio de narrativas jornalísticas sensíveis e bem apuradas.',
+    'O projeto cruza indicadores oficiais com uma entrevista exclusiva para revelar como turismo, comércio, serviços e cultura se conectam em Salvador.',
   paragraphs: [
-    'Nossa jornada reúne pautas sobre custos do comércio, serviços e cultura no turismo. As reportagens nascem de apuração em campo, entrevistas e leitura de dados.',
-    'Cada matéria é pensada para combinar contexto, escuta e narrativa visual. O resultado é um especial multimídia pronto para receber conteúdos dinâmicos.',
+    'As pautas partem de bases abertas (IBGE, dados.gov e portais locais) para mapear fluxo turístico, gasto e emprego.',
+    'A entrevista com o secretário de turismo complementa os números com decisões de gestão e desafios do setor.',
   ],
   image: '/imgs/pelourinho.jpg',
   stats: [
-    { value: '12+', label: 'temas editoriais' },
-    { value: '40+', label: 'entrevistas previstas' },
+    { value: '6', label: 'bases públicas' },
+    { value: '18', label: 'indicadores' },
   ],
-  impact: { value: '28+', label: 'pautas em produção' },
+  impact: { value: '1', label: 'entrevista-chave' },
   socials: [
-    { label: 'Site do projeto', href: '#', icon: 'globe' },
-    { label: 'Contato', href: '#', icon: 'mail' },
-    { label: 'Mapa de campo', href: '#', icon: 'map' },
+    { label: 'Dados.gov.br', href: 'https://dados.gov.br/', icon: 'globe' },
+    { label: 'IBGE', href: 'https://www.ibge.gov.br/', icon: 'map' },
+    { label: 'Ministério do Turismo', href: 'https://www.gov.br/turismo/', icon: 'globe' },
   ],
   aside: {
     name: 'Turma de Jornalismo',
-    role: 'Laboratório de Jornalismo Digital',
-    ctaTitle: 'Pronta para compartilhar sua matéria?',
-    ctaLabel: 'Enviar pauta',
+    role: 'UCSAL - 2026',
+    ctaTitle: 'Conheça a universidade',
+    ctaLabel: 'Site da UCSAL',
+    ctaHref: 'https://www.ucsal.br/',
   },
 }
 
 export const destinationFilters = [
-  'Praias',
-  'Turismo histórico',
-  'Gastronomia',
-  'Ecoturismo',
+  'Comércio',
+  'Serviços',
   'Cultura',
-  'Eventos',
+  'Fluxo turístico',
+  'Emprego',
+  'Gestão pública',
 ]
 
 export const destinations = [
   {
     id: 'd1',
-    category: 'Ecoturismo',
-    title: 'Rotas de natureza que reescrevem o turismo brasileiro',
+    category: 'Comércio',
+    title: 'Varejo turístico e gasto médio em Salvador',
     summary:
-      'Da floresta ao litoral, caminhos que mostram como a preservação pode impulsionar novas economias locais.',
+      'Cruzamento de arrecadação, consumo e fluxo de visitantes nas zonas turísticas.',
     image: '/imgs/itapua.jpg',
   },
   {
     id: 'd2',
-    category: 'Gastronomia',
-    title: 'Sabores que contam histórias: cozinhas regionais em foco',
+    category: 'Serviços',
+    title: 'Hospedagem e mobilidade: oferta x demanda',
     summary:
-      'Chefs, mercados e tradições gastronômicas que revelam identidades culturais pelo paladar.',
+      'Dados públicos ajudam a entender ocupação, transporte e sazonalidade do turismo.',
     image: '/imgs/dique.jpg',
   },
   {
     id: 'd3',
-    category: 'Turismo histórico',
-    title: 'Centros históricos e memória viva do patrimônio brasileiro',
+    category: 'Cultura',
+    title: 'Agenda cultural como motor de visitação',
     summary:
-      'Cidades que preservam patrimônio e reinventam seus centros para receber visitantes.',
+      'Eventos, museus e patrimônio conectados aos picos de circulação turística.',
     image: '/imgs/pelourinho.jpg',
   },
   {
     id: 'd4',
-    category: 'Praias',
-    title: 'Litorais em transformação: turismo, sustentabilidade e comunidade',
+    category: 'Fluxo turístico',
+    title: 'Quem visita, quando visita, por quê',
     summary:
-      'Como destinos costeiros se adaptam ao crescimento do turismo sem perder suas raízes.',
+      'Séries históricas revelam origem dos visitantes e permanência média.',
     image: '/imgs/faroul-barra.jpg',
   },
   {
     id: 'd5',
-    category: 'Cultura',
-    title: 'Festivais, artes e a força das culturas locais',
+    category: 'Emprego',
+    title: 'Trabalho e renda no setor turístico',
     summary:
-      'Eventos que movimentam cidades e criam novas experiências de viagem.',
+      'Indicadores de emprego em comércio e serviços que sustentam a atividade.',
     image: '/imgs/elevador-lacerda.jpg',
   },
   {
     id: 'd6',
-    category: 'Eventos',
-    title: 'Calendários turísticos e economias criativas em expansão',
+    category: 'Gestão pública',
+    title: 'Entrevista com o secretário de turismo',
     summary:
-      'A agenda cultural como motor de fluxo turístico e visibilidade regional.',
+      'Decisões, prioridades e desafios para a política pública de turismo.',
     image: '/imgs/senhor-bonfim.jpg',
   },
 ]
@@ -108,29 +109,29 @@ export const destinations = [
 export const storytelling = [
   {
     id: 's1',
-    tag: 'Reportagem em campo',
-    title: 'Vozes que narram o território',
+    tag: 'Base pública',
+    title: 'Indicadores que estruturam as pautas',
     text:
-      'Pequenas entrevistas e registros sonoros revelam como moradores enxergam o turismo em suas cidades.',
-    data: '48 relatos locais mapeados',
+      'Séries históricas de turismo, comércio e serviços orientam o recorte jornalístico.',
+    data: '6 bases abertas consultadas',
     image: '/imgs/igreja.jpg',
   },
   {
     id: 's2',
-    tag: 'Diário de viagem',
-    title: 'Percursos que se transformam em histórias',
+    tag: 'Entrevista',
+    title: 'A visão do secretário de turismo',
     text:
-      'Narrativas que acompanham a jornada completa: chegada, deslocamento, encontros e descobertas.',
-    data: '12 rotas documentadas',
+      'A conversa em profundidade adiciona decisões, desafios e metas ao contexto dos dados.',
+    data: '1 entrevista em profundidade',
     image: '/imgs/pelourinho.jpg',
   },
   {
     id: 's3',
-    tag: 'Dados e contexto',
-    title: 'O impacto do turismo na economia local',
+    tag: 'Cruzamentos',
+    title: 'Cultura como vetor de fluxo turístico',
     text:
-      'Infográficos e indicadores ajudam a contextualizar o papel do turismo no desenvolvimento regional.',
-    data: '6 indicadores analisados',
+      'Comparativos entre eventos culturais e variações de fluxo ajudam a explicar picos.',
+    data: '18 indicadores cruzados',
     image: '/imgs/dique.jpg',
   },
 ]
@@ -139,34 +140,34 @@ export const stats = [
   {
     id: 'st1',
     icon: 'compass',
-    label: 'Destinos mapeados',
-    value: 36,
+    label: 'Bases públicas',
+    value: 6,
     suffix: '',
-    description: 'Localidades analisadas com foco em diversidade cultural.',
+    description: 'Fontes abertas que sustentam as análises e gráficos.',
   },
   {
     id: 'st2',
     icon: 'camera',
-    label: 'Registros multimídia',
-    value: 128,
+    label: 'Indicadores',
+    value: 18,
     suffix: '+',
-    description: 'Fotografias, vídeos curtos e entrevistas editadas.',
+    description: 'Variáveis de turismo, comércio, serviços e cultura.',
   },
   {
     id: 'st3',
     icon: 'sparkles',
-    label: 'Curiosidades reunidas',
-    value: 54,
+    label: 'Séries históricas',
+    value: 12,
     suffix: '',
-    description: 'Fatos e dados que ampliam a compreensão dos destinos.',
+    description: 'Períodos comparados para leitura de sazonalidade.',
   },
   {
     id: 'st4',
     icon: 'landmark',
-    label: 'Patrimônios destacados',
-    value: 18,
+    label: 'Entrevista-chave',
+    value: 1,
     suffix: '',
-    description: 'Lugares que representam memória, cultura e identidade.',
+    description: 'Visão da gestão pública para contextualizar os dados.',
   },
 ]
 
@@ -177,17 +178,17 @@ export const teamMembers = [
     role: 'Coordenação editorial',
     affiliation: 'Laboratório de Jornalismo Digital',
     quote:
-      'Conectamos dados e histórias para traduzir o impacto do turismo na vida cotidiana.',
+      'Transformamos dados públicos e entrevistas em narrativas claras sobre o turismo.',
     image: '/imgs/Giuliana%20Farias.png',
     thumbnail: '/imgs/Giuliana%20Farias.png',
   },
   {
     id: 't2',
     name: 'Guilherme Rios',
-    role: 'Pesquisa de campo',
+    role: 'Pesquisa de dados',
     affiliation: 'Equipe de reportagem',
     quote:
-      'Ouvir moradores e comerciantes é essencial para compreender custos e serviços no turismo.',
+      'A leitura das bases abertas mostra como comércio e serviços sentem o turismo.',
     image: '/imgs/Guilherme_rios.png',
     thumbnail: '/imgs/Guilherme_rios.png',
   },
@@ -197,7 +198,7 @@ export const teamMembers = [
     role: 'Análise de dados',
     affiliation: 'Núcleo de dados',
     quote:
-      'Os indicadores ajudam a revelar como comércio, serviços e cultura se conectam.',
+      'Cruzamos indicadores para entender cultura e fluxo turístico com rigor.',
     image: '/imgs/Mirela%20Portela.png',
     thumbnail: '/imgs/Mirela%20Portela.png',
   },
@@ -207,14 +208,14 @@ export const teamMembers = [
     role: 'Narrativas visuais',
     affiliation: 'Direção de arte',
     quote:
-      'Transformamos entrevistas e imagens em uma experiência visual clara e sensível.',
+      'Visualizamos dados e trechos da entrevista para destacar impactos do turismo.',
     image: '/imgs/P%C3%A9rola%20Lins.png',
     thumbnail: '/imgs/P%C3%A9rola%20Lins.png',
   },
 ]
 
 export const footerInfo = {
-  project: 'Projeto acadêmico da turma de Jornalismo',
+  project: 'Projeto acadêmico com dados públicos e entrevista',
   credits: 'Universidade | UCSAL',
   year: new Date().getFullYear(),
 }
