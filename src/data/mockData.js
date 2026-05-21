@@ -11,8 +11,8 @@ export const heroContent = {
   eyebrow: 'Especial multimídia de turismo',
   headline: 'Ah, que bom!\nVocê chegou.\nBem vindo a Salvador!',
   subtitle:
-    'Uma experiência editorial criada pela turma de Jornalismo para reunir matérias, entrevistas, dados e narrativas sobre o turismo contemporâneo.',
-  highlights: ['Reportagens especiais', 'Curadorias locais', 'Dados e curiosidades'],
+    'Uma experiência editorial criada pela turma de Jornalismo para reunir matérias, entrevistas, dados e narrativas sobre custos do comércio, serviços e cultura no turismo contemporâneo.',
+  highlights: ['Custos do comércio', 'Serviços turísticos', 'Cultura no turismo'],
   image: '/imgs/salvador-principal.jpg',
   primaryCta: 'Ver reportagens',
   secondaryCta: 'Conhecer o projeto',
@@ -22,9 +22,9 @@ export const aboutContent = {
   label: 'Projeto em foco',
   title: 'Turismo em Foco: narrativas jornalísticas sobre viagens e territórios',
   description:
-    'A proposta é construir um portal informativo que conecta destinos, culturas e pessoas por meio de narrativas jornalísticas sensíveis e bem apuradas.',
+    'A proposta é construir um portal informativo que aborda custos do comércio, serviços e cultura no turismo, conectando destinos, culturas e pessoas por meio de narrativas jornalísticas sensíveis e bem apuradas.',
   paragraphs: [
-    'Nossa jornada reúne pautas que atravessam turismo, cultura e economia criativa. As reportagens nascem de apuração em campo, entrevistas e leitura de dados.',
+    'Nossa jornada reúne pautas sobre custos do comércio, serviços e cultura no turismo. As reportagens nascem de apuração em campo, entrevistas e leitura de dados.',
     'Cada matéria é pensada para combinar contexto, escuta e narrativa visual. O resultado é um especial multimídia pronto para receber conteúdos dinâmicos.',
   ],
   image: '/imgs/pelourinho.jpg',
