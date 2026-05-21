@@ -118,7 +118,7 @@ export default function Stats() {
   ]
 
   return (
-    <section id="dados" className="bg-white py-20 sm:py-24">
+    <section id="dados" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading
           eyebrow="Dados públicos"
@@ -182,7 +182,7 @@ export default function Stats() {
               </div>
             </div>
 
-            <div className="mt-6 h-80">
+            <div className="mt-6 h-72 sm:h-80">
               <svg className="h-full w-full" viewBox="0 0 800 360">
                 <defs>
                   <pattern

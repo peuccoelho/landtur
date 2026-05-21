@@ -81,7 +81,7 @@ export default function Storytelling() {
   const activeStory = storytelling[currentIndex]
 
   return (
-    <section id="storytelling" className="bg-sand-50 py-20 sm:py-24">
+    <section id="storytelling" className="bg-sand-50 py-16 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading
           align="center"
@@ -93,7 +93,7 @@ export default function Storytelling() {
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div
-            className="relative flex h-[520px] w-full items-center justify-center overflow-hidden rounded-3xl bg-white"
+            className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-3xl bg-white sm:h-[520px]"
             onWheel={handleWheel}
             style={{ perspective: '1200px' }}
           >
@@ -101,7 +101,7 @@ export default function Storytelling() {
               <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ocean-100/40 blur-3xl" />
             </div>
 
-            <div className="relative flex h-[420px] w-[300px] items-center justify-center">
+            <div className="relative flex h-[320px] w-[230px] items-center justify-center sm:h-[420px] sm:w-[300px]">
               {storytelling.map((story, index) => {
                 if (!isVisible(index)) return null
                 const style = getCardStyle(index)
@@ -131,7 +131,7 @@ export default function Storytelling() {
                     style={{ transformStyle: 'preserve-3d', zIndex: style.zIndex }}
                   >
                     <div
-                      className="relative h-[380px] w-[260px] overflow-hidden rounded-3xl bg-sand-100 ring-1 ring-sand-200/60"
+                      className="relative h-[280px] w-[200px] overflow-hidden rounded-3xl bg-sand-100 ring-1 ring-sand-200/60 sm:h-[380px] sm:w-[260px]"
                       style={{
                         boxShadow: isCurrent
                           ? '0 30px 60px -20px rgba(17, 75, 116, 0.35)'

@@ -13,7 +13,7 @@ export default function About() {
   }
 
   return (
-    <section id="sobre" className="bg-sand-50 py-20 sm:py-24">
+    <section id="sobre" className="bg-sand-50 py-16 sm:py-20 lg:py-24">
       <Container>
         <div className="relative">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">

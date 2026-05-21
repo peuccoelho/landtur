@@ -57,7 +57,7 @@ export default function Destinations() {
   }
 
   return (
-    <section id="destinos" className="bg-white py-20 sm:py-24">
+    <section id="destinos" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container>
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -79,7 +79,7 @@ export default function Destinations() {
         </div>
 
         <Reveal className="mt-12">
-          <div className="relative w-full overflow-hidden rounded-3xl bg-sand-50/80 p-6 md:p-10">
+          <div className="relative w-full overflow-hidden rounded-3xl bg-sand-50/80 p-5 sm:p-6 md:p-10">
             <div className="grid h-full grid-cols-1 gap-10 md:grid-cols-12">
               <div className="order-2 flex flex-col justify-between md:order-1 md:col-span-3">
                 <div className="flex flex-row items-center justify-between md:flex-col md:items-start md:space-y-4">
@@ -100,7 +100,7 @@ export default function Destinations() {
                       <button
                         key={destination.id}
                         onClick={() => handleThumbnailClick(originalIndex)}
-                        className="h-20 w-16 overflow-hidden rounded-2xl border border-white/40 opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean-600 md:h-24 md:w-20"
+                        className="h-16 w-12 overflow-hidden rounded-2xl border border-white/40 opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean-600 sm:h-20 sm:w-16 md:h-24 md:w-20"
                         aria-label={`Ver matéria ${destination.title}`}
                         type="button"
                       >
@@ -117,7 +117,7 @@ export default function Destinations() {
                 </div>
               </div>
 
-              <div className="order-1 relative h-80 min-h-[360px] md:order-2 md:col-span-4 md:min-h-[480px]">
+              <div className="order-1 relative h-64 sm:h-72 md:order-2 md:col-span-4 md:h-[480px]">
                 <AnimatePresence initial={false} custom={direction}>
                   <motion.img
                     key={currentIndex}
@@ -137,7 +137,7 @@ export default function Destinations() {
               </div>
 
               <div className="order-3 flex flex-col justify-between md:col-span-5 md:pl-6">
-                <div className="relative min-h-[220px] overflow-hidden pt-4 md:pt-20">
+                <div className="relative min-h-[180px] overflow-hidden pt-2 sm:pt-4 md:min-h-[220px] md:pt-20">
                   <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.div
                       key={currentIndex}

@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] overflow-hidden bg-ink-900 text-white"
+      className="relative min-h-[80vh] overflow-hidden bg-ink-900 text-white sm:min-h-[90vh]"
     >
       <motion.div style={{ y: parallaxY }} className="absolute inset-0">
         <div
@@ -24,7 +24,7 @@ export default function Hero() {
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-ink-900/20 via-ink-900/40 to-ink-900/80" />
 
-      <Container className="relative z-10 flex min-h-[90vh] flex-col justify-center py-28 lg:py-36">
+      <Container className="relative z-10 flex min-h-[80vh] flex-col justify-center py-24 sm:min-h-[90vh] sm:py-28 lg:py-36">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.4em] text-sand-100/80">
             {heroContent.eyebrow}

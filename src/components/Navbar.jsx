@@ -12,9 +12,9 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen((prev) => !prev)
 
   return (
-    <header className="fixed left-0 right-0 top-4 z-50">
-      <div className="flex w-full justify-center px-4">
-        <div className="flex w-full max-w-5xl items-center justify-between rounded-full bg-white/90 px-5 py-3 shadow-lg ring-1 ring-black/5 backdrop-blur">
+    <header className="fixed left-0 right-0 top-3 z-50 sm:top-4">
+      <div className="flex w-full justify-center px-3 sm:px-4">
+        <div className="flex w-full max-w-5xl items-center justify-between rounded-full bg-white/90 px-4 py-2.5 shadow-lg ring-1 ring-black/5 backdrop-blur sm:px-5 sm:py-3">
           <div className="flex items-center gap-3">
             <motion.div
               className="flex h-10 w-10 items-center justify-center"
