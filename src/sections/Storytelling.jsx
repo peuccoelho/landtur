@@ -93,7 +93,7 @@ export default function Storytelling() {
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div
-            className="relative flex h-[520px] w-full items-center justify-center overflow-hidden rounded-3xl border border-sand-200 bg-white shadow-soft"
+            className="relative flex h-[520px] w-full items-center justify-center overflow-hidden rounded-3xl bg-white"
             onWheel={handleWheel}
             style={{ perspective: '1200px' }}
           >

@@ -79,7 +79,7 @@ export default function Destinations() {
         </div>
 
         <Reveal className="mt-12">
-          <div className="relative w-full overflow-hidden rounded-3xl border border-sand-200 bg-sand-50/80 p-6 shadow-soft md:p-10">
+          <div className="relative w-full overflow-hidden rounded-3xl bg-sand-50/80 p-6 md:p-10">
             <div className="grid h-full grid-cols-1 gap-10 md:grid-cols-12">
               <div className="order-2 flex flex-col justify-between md:order-1 md:col-span-3">
                 <div className="flex flex-row items-center justify-between md:flex-col md:items-start md:space-y-4">

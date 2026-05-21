@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowDownRight, PlayCircle } from 'lucide-react'
+import BlurFade from '../components/BlurFade.jsx'
 import Button from '../components/Button.jsx'
 import Container from '../components/Container.jsx'
 import Reveal from '../components/Reveal.jsx'
@@ -29,11 +30,18 @@ export default function Hero() {
             {heroContent.eyebrow}
           </p>
         </Reveal>
-        <Reveal delay={0.1}>
-          <h1 className="mt-6 max-w-3xl font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl">
-            {heroContent.headline}
-          </h1>
-        </Reveal>
+        <div className="mt-6 max-w-3xl font-serif text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
+          {heroContent.headline.split('\n').map((line, index) => (
+            <BlurFade
+              key={line}
+              className="block"
+              delay={index * 0.12}
+              inView
+            >
+              <span className="block">{line}</span>
+            </BlurFade>
+          ))}
+        </div>
         <Reveal delay={0.2}>
           <p className="mt-6 max-w-2xl text-lg text-sand-100/90 sm:text-xl">
             {heroContent.subtitle}
