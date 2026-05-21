@@ -59,7 +59,7 @@ export default function Voices() {
         <SectionHeading
           eyebrow="Nossa equipe"
           title="Quem constrói o Turismo em Foco"
-          subtitle="Professores, estudantes e colaboradores dedicados à apuração e produção."
+          subtitle="Estudantes dedicados à apuração e produção."
         />
         <Reveal className="mt-12">
           <div className="relative w-full overflow-hidden rounded-3xl bg-sand-50/80 p-5 sm:p-6 md:p-10">
