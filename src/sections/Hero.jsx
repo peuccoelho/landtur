@@ -59,11 +59,7 @@ export default function Hero() {
             ))}
           </div>
         </Reveal>
-        <Reveal delay={0.32}>
-          <p className="mt-6 max-w-2xl text-base text-sand-100/80 sm:text-lg">
-            {heroContent.summary}
-          </p>
-        </Reveal>
+        
         
 
         <Reveal delay={0.5}>
