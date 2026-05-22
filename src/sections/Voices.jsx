@@ -54,12 +54,12 @@ export default function Voices() {
   }
 
   return (
-    <section id="equipe" className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="perfil" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading
-          eyebrow="Nossa equipe"
-          title="Quem constrói o Turismo em Foco"
-          subtitle="Estudantes dedicados à apuração e produção."
+          eyebrow="Perfil do turista estrangeiro"
+          title="Quem visita Salvador e por quê"
+          subtitle="Dados de origem, gasto médio e motivação cultural."
         />
         <Reveal className="mt-12">
           <div className="relative w-full overflow-hidden rounded-3xl bg-sand-50/80 p-5 sm:p-6 md:p-10">

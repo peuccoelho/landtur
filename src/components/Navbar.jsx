@@ -33,7 +33,7 @@ export default function Navbar() {
             </motion.div>
             <div className="hidden sm:block">
               <p className="text-sm font-semibold text-ink-900">Turismo em Foco</p>
-              <p className="text-xs text-ink-600">Jornalismo de viagem</p>
+              <p className="text-xs text-ink-600">Jornalismo de dados</p>
             </div>
           </div>
 

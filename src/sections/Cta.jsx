@@ -22,8 +22,8 @@ export default function Cta() {
                   atualizados pela turma.
                 </p>
               </div>
-              <Button href="#destinos" variant="outline" className="self-start">
-                Ver reportagens
+              <Button href="#contexto" variant="outline" className="self-start">
+                Ver contexto
                 <ArrowUpRight size={18} />
               </Button>
             </div>

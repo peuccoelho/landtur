@@ -2,9 +2,9 @@ import { useCallback, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Container from '../components/Container.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
-import { storytelling } from '../data/mockData.js'
+import { contextAnalysis } from '../data/mockData.js'
 
-export default function Storytelling() {
+export default function Semop() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const lastNavigationTime = useRef(0)
   const navigationCooldown = 400
@@ -16,9 +16,9 @@ export default function Storytelling() {
 
     setCurrentIndex((prev) => {
       if (direction > 0) {
-        return prev === storytelling.length - 1 ? 0 : prev + 1
+        return prev === contextAnalysis.images.length - 1 ? 0 : prev + 1
       }
-      return prev === 0 ? storytelling.length - 1 : prev - 1
+      return prev === 0 ? contextAnalysis.images.length - 1 : prev - 1
     })
   }, [])
 
@@ -41,7 +41,7 @@ export default function Storytelling() {
   }
 
   const getCardStyle = (index) => {
-    const total = storytelling.length
+    const total = contextAnalysis.images.length
     let diff = index - currentIndex
     if (diff > total / 2) diff -= total
     if (diff < -total / 2) diff += total
@@ -71,26 +71,23 @@ export default function Storytelling() {
   }
 
   const isVisible = (index) => {
-    const total = storytelling.length
+    const total = contextAnalysis.images.length
     let diff = index - currentIndex
     if (diff > total / 2) diff -= total
     if (diff < -total / 2) diff += total
     return Math.abs(diff) <= 2
   }
 
-  const activeStory = storytelling[currentIndex]
+  const activeImage = contextAnalysis.images[currentIndex]
 
   return (
-    <section id="insights" className="bg-sand-50 py-16 sm:py-20 lg:py-24">
+    <section id="analise" className="bg-sand-50 py-16 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading
-          align="center"
-          eyebrow="Insights e projeções"
-          title="Três sinais para a próxima década"
-          subtitle="Leituras estratégicas para entender o novo ciclo turístico de Salvador."
-          className="max-w-3xl"
+          eyebrow={contextAnalysis.eyebrow}
+          title={contextAnalysis.title}
+          subtitle={contextAnalysis.subtitle}
         />
-
         <div className="mt-12 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div
             className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-3xl bg-white sm:h-[520px]"
@@ -102,14 +99,14 @@ export default function Storytelling() {
             </div>
 
             <div className="relative flex h-[320px] w-[230px] items-center justify-center sm:h-[420px] sm:w-[300px]">
-              {storytelling.map((story, index) => {
+              {contextAnalysis.images.map((image, index) => {
                 if (!isVisible(index)) return null
                 const style = getCardStyle(index)
                 const isCurrent = index === currentIndex
 
                 return (
                   <motion.div
-                    key={story.id}
+                    key={image.id}
                     className="absolute cursor-grab active:cursor-grabbing"
                     animate={{
                       y: style.y,
@@ -140,8 +137,8 @@ export default function Storytelling() {
                     >
                       <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/30 via-transparent to-transparent" />
                       <img
-                        src={story.image}
-                        alt={story.title}
+                        src={image.src}
+                        alt={image.title}
                         loading="lazy"
                         decoding="async"
                         className="h-full w-full object-cover"
@@ -155,16 +152,14 @@ export default function Storytelling() {
             </div>
 
             <div className="absolute right-4 top-1/2 flex -translate-y-1/2 flex-col gap-2">
-              {storytelling.map((_, index) => (
+              {contextAnalysis.images.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? 'h-6 bg-ocean-600'
-                      : 'bg-ink-300 hover:bg-ink-500'
+                    index === currentIndex ? 'h-6 bg-ocean-600' : 'bg-ink-300 hover:bg-ink-500'
                   }`}
-                  aria-label={`Ir para história ${index + 1}`}
+                  aria-label={`Ir para imagem ${index + 1}`}
                   type="button"
                 />
               ))}
@@ -176,31 +171,24 @@ export default function Storytelling() {
               </span>
               <div className="my-2 h-px w-8 bg-ink-200" />
               <span className="text-xs text-ink-500 tabular-nums">
-                {String(storytelling.length).padStart(2, '0')}
+                {String(contextAnalysis.images.length).padStart(2, '0')}
               </span>
             </div>
-
           </div>
 
           <div className="relative min-h-[280px]">
             <AnimatePresence mode="wait">
               <motion.div
-                key={activeStory.id}
+                key={activeImage.id}
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -30 }}
                 transition={{ duration: 0.5 }}
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ocean-600">
-                  {activeStory.tag}
+                  {activeImage.title}
                 </p>
-                <h3 className="mt-4 text-3xl font-semibold text-ink-900">
-                  {activeStory.title}
-                </h3>
-                <p className="mt-5 text-base text-ink-700">{activeStory.text}</p>
-                <div className="mt-6 inline-flex rounded-full border border-sand-200 bg-white px-4 py-2 text-xs uppercase tracking-[0.2em] text-ink-600">
-                  {activeStory.data}
-                </div>
+                <p className="mt-6 text-sm text-ink-700">{activeImage.text}</p>
               </motion.div>
             </AnimatePresence>
           </div>

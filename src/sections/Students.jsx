@@ -1,26 +1,25 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
-import Button from '../components/Button.jsx'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Reveal from '../components/Reveal.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
-import { destinationFilters, destinations } from '../data/mockData.js'
+import { students } from '../data/mockData.js'
 
-export default function Destinations() {
+export default function Students() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState('right')
 
-  const activeDestination = destinations[currentIndex]
+  const activeStudent = students[currentIndex]
 
   const handleNext = () => {
     setDirection('right')
-    setCurrentIndex((prev) => (prev + 1) % destinations.length)
+    setCurrentIndex((prev) => (prev + 1) % students.length)
   }
 
   const handlePrev = () => {
     setDirection('left')
-    setCurrentIndex((prev) => (prev - 1 + destinations.length) % destinations.length)
+    setCurrentIndex((prev) => (prev - 1 + students.length) % students.length)
   }
 
   const handleThumbnailClick = (index) => {
@@ -28,9 +27,7 @@ export default function Destinations() {
     setCurrentIndex(index)
   }
 
-  const thumbnailDestinations = destinations
-    .filter((_, index) => index !== currentIndex)
-    .slice(0, 3)
+  const thumbnailStudents = students.filter((_, index) => index !== currentIndex).slice(0, 3)
 
   const imageVariants = {
     enter: (slideDirection) => ({
@@ -57,27 +54,13 @@ export default function Destinations() {
   }
 
   return (
-    <section id="circuitos" className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="alunos" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            eyebrow="Circuitos e locais mais procurados"
-            title="Rotas de visitação com maior demanda"
-            subtitle="Quatro polos sustentam o fluxo turístico em Salvador."
-          />
-          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-ink-600">
-            {destinationFilters.map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                className="rounded-full border border-sand-200 px-4 py-2 transition hover:border-ocean-300 hover:text-ocean-700"
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </div>
-
+        <SectionHeading
+          eyebrow="Equipe responsável"
+          title="Alunos responsáveis pelo site"
+          subtitle="Produção e desenvolvimento do especial de jornalismo de dados."
+        />
         <Reveal className="mt-12">
           <div className="relative w-full overflow-hidden rounded-3xl bg-sand-50/80 p-5 sm:p-6 md:p-10">
             <div className="grid h-full grid-cols-1 gap-10 md:grid-cols-12">
@@ -85,28 +68,26 @@ export default function Destinations() {
                 <div className="flex flex-row items-center justify-between md:flex-col md:items-start md:space-y-4">
                   <span className="text-xs font-mono text-ink-500">
                     {String(currentIndex + 1).padStart(2, '0')} /{' '}
-                    {String(destinations.length).padStart(2, '0')}
+                    {String(students.length).padStart(2, '0')}
                   </span>
                   <p className="hidden text-xs font-semibold uppercase tracking-[0.4em] text-ink-400 md:block [writing-mode:vertical-rl] md:rotate-180">
-                    Destinos
+                    Alunos
                   </p>
                 </div>
                 <div className="mt-6 flex gap-3 md:mt-0 md:flex-col">
-                  {thumbnailDestinations.map((destination) => {
-                    const originalIndex = destinations.findIndex(
-                      (item) => item.id === destination.id,
-                    )
+                  {thumbnailStudents.map((student) => {
+                    const originalIndex = students.findIndex((item) => item.id === student.id)
                     return (
                       <button
-                        key={destination.id}
+                        key={student.id}
                         onClick={() => handleThumbnailClick(originalIndex)}
                         className="h-16 w-12 overflow-hidden rounded-2xl border border-white/40 opacity-70 transition hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ocean-600 sm:h-20 sm:w-16 md:h-24 md:w-20"
-                        aria-label={`Ver matéria ${destination.title}`}
+                        aria-label={`Ver aluno ${student.name}`}
                         type="button"
                       >
                         <img
-                          src={destination.image}
-                          alt={destination.title}
+                          src={student.image}
+                          alt={student.name}
                           className="h-full w-full object-cover"
                           loading="lazy"
                           decoding="async"
@@ -121,8 +102,8 @@ export default function Destinations() {
                 <AnimatePresence initial={false} custom={direction}>
                   <motion.img
                     key={currentIndex}
-                    src={activeDestination.image}
-                    alt={activeDestination.title}
+                    src={activeStudent.image}
+                    alt={activeStudent.name}
                     custom={direction}
                     variants={imageVariants}
                     initial="enter"
@@ -149,41 +130,38 @@ export default function Destinations() {
                       transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                     >
                       <p className="text-xs uppercase tracking-[0.3em] text-sage-600">
-                        {activeDestination.category}
+                        UCSAL
                       </p>
                       <h3 className="mt-4 text-2xl font-semibold text-ink-900 md:text-3xl">
-                        {activeDestination.title}
+                        {activeStudent.name}
                       </h3>
+                      <p className="mt-2 text-sm font-semibold text-ink-700">
+                        Equipe responsável pelo site
+                      </p>
                       <p className="mt-5 text-base text-ink-700">
-                        &ldquo;{activeDestination.summary}&rdquo;
+                        Produção e desenvolvimento do especial de jornalismo de dados.
                       </p>
                     </motion.div>
                   </AnimatePresence>
                 </div>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Button variant="ghost" href="#analise">
-                    Ver contexto
-                    <ArrowUpRight size={16} />
-                  </Button>
-                  <div className="flex items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={handlePrev}
-                      aria-label="Matéria anterior"
-                      className="flex h-12 w-12 items-center justify-center rounded-full border border-sand-200 text-ink-700 transition hover:border-ocean-400 hover:text-ocean-700"
-                    >
-                      <ArrowLeft size={18} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleNext}
-                      aria-label="Próxima matéria"
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-ocean-600 text-white shadow-soft transition hover:bg-ocean-700"
-                    >
-                      <ArrowRight size={18} />
-                    </button>
-                  </div>
+                <div className="mt-8 flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={handlePrev}
+                    aria-label="Aluno anterior"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-sand-200 text-ink-700 transition hover:border-ocean-400 hover:text-ocean-700"
+                  >
+                    <ArrowLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    aria-label="Próximo aluno"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-ocean-600 text-white shadow-soft transition hover:bg-ocean-700"
+                  >
+                    <ArrowRight size={18} />
+                  </button>
                 </div>
               </div>
             </div>

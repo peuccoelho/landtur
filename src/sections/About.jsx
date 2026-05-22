@@ -134,7 +134,7 @@ export default function About() {
             <Reveal delay={0.3}>
               <Button
                 variant="primary"
-                href="https://www.ucsal.br/"
+                href={aboutContent.aside.ctaHref}
                 className="mt-4 inline-flex"
               >
                 {aboutContent.aside.ctaLabel}

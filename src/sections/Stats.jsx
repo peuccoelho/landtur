@@ -1,39 +1,7 @@
 import { useEffect, useState } from 'react'
 import Container from '../components/Container.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
-
-const dataByPeriod = {
-  '2019–2024': {
-    dates: ['2019', '2020', '2021', '2022', '2023', '2024'],
-    commerce: [120, 95, 110, 140, 160, 175],
-    services: [90, 80, 95, 120, 138, 150],
-    peak: 175,
-    average: 131,
-    growth: '+12%',
-  },
-  '2022–2024': {
-    dates: ['1º sem/22', '2º sem/22', '1º sem/23', '2º sem/23', '1º sem/24', '2º sem/24'],
-    commerce: [140, 150, 155, 162, 170, 182],
-    services: [120, 128, 135, 142, 150, 160],
-    peak: 182,
-    average: 148,
-    growth: '+9%',
-  },
-  '2024 (parcial)': {
-    dates: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-    commerce: [158, 162, 170, 175, 180, 188],
-    services: [140, 145, 150, 155, 162, 168],
-    peak: 188,
-    average: 162,
-    growth: '+6%',
-  },
-}
-
-const periods = [
-  { label: '2019–2024', size: '6 séries', color: 'bg-sage-500' },
-  { label: '2022–2024', size: '4 séries', color: 'bg-ocean-500' },
-  { label: '2024 (parcial)', size: '2 séries', color: 'bg-sand-500' },
-]
+import { dataPanel } from '../data/mockData.js'
 
 const generateSmoothPath = (values, maxValue, height = 320, isArea = false) => {
   const width = 800
@@ -72,15 +40,34 @@ const generateSmoothPath = (values, maxValue, height = 320, isArea = false) => {
   return path
 }
 
+const buildTrend = (values) =>
+  values.map((value, index) =>
+    index === 0 ? value : (value + values[index - 1]) / 2,
+  )
+
+const formatCompactNumber = (value) =>
+  new Intl.NumberFormat('pt-BR', {
+    notation: 'compact',
+    maximumFractionDigits: 1,
+  }).format(value)
+
+const formatPercent = (value) => {
+  if (!Number.isFinite(value)) return '—'
+  const rounded = Math.round(value)
+  return `${rounded >= 0 ? '+' : ''}${rounded}%`
+}
+
 export default function Stats() {
-  const [selectedPeriod, setSelectedPeriod] = useState('2022–2024')
+  const [selectedDataset, setSelectedDataset] = useState(dataPanel.datasets[0].id)
   const [hoveredPoint, setHoveredPoint] = useState(null)
   const [animationPhase, setAnimationPhase] = useState(0)
   const [chartVisible, setChartVisible] = useState(false)
 
-  const currentData = dataByPeriod[selectedPeriod]
-  const maxValue =
-    Math.max(...currentData.commerce, ...currentData.services) * 1.1
+  const currentData =
+    dataPanel.datasets.find((dataset) => dataset.id === selectedDataset) ??
+    dataPanel.datasets[0]
+  const trendValues = buildTrend(currentData.values)
+  const maxValue = Math.max(...currentData.values, ...trendValues) * 1.1
 
   useEffect(() => {
     setChartVisible(false)
@@ -94,26 +81,47 @@ export default function Stats() {
     ]
 
     return () => timers.forEach(clearTimeout)
-  }, [selectedPeriod])
+  }, [selectedDataset])
+
+  const total = currentData.values.reduce((acc, value) => acc + value, 0)
+  const peak = Math.max(...currentData.values)
+  const average = total / currentData.values.length
+  const growth =
+    currentData.values.length > 1
+      ? ((currentData.values.at(-1) - currentData.values[0]) /
+          currentData.values[0]) *
+        100
+      : 0
+
+  const formatValue = (value, format = currentData.format) =>
+    format === 'percent' ? `${Math.round(value)}%` : formatCompactNumber(value)
+
+  const formatLegendValue = (value, format = currentData.format) =>
+    format === 'percent' ? `${Math.round(value)}%` : formatCompactNumber(value)
+
+  const summaryValue =
+    currentData.format === 'percent'
+      ? `${Math.min(...currentData.values)}%–${Math.max(...currentData.values)}%`
+      : formatCompactNumber(total)
 
   const metrics = [
     {
       label: 'Pico',
-      value: currentData.peak,
+      value: formatValue(peak),
       color: 'border-ocean-400',
-      size: 'registros',
+      size: 'ano',
     },
     {
       label: 'Média',
-      value: currentData.average,
+      value: formatValue(average),
       color: 'border-sand-500',
-      size: 'registros',
+      size: 'período',
     },
     {
       label: 'Variação',
-      value: currentData.growth,
+      value: formatPercent(growth),
       color: 'border-sage-500',
-      size: 'período',
+      size: currentData.size,
     },
   ]
 
@@ -121,44 +129,52 @@ export default function Stats() {
     <section id="dados" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading
-          eyebrow="Dados públicos"
-          title="Indicadores de turismo, comércio e cultura"
-          subtitle="Séries históricas e comparativos para sustentar as reportagens."
+          eyebrow={dataPanel.eyebrow}
+          title={dataPanel.title}
+          subtitle={dataPanel.subtitle}
         />
         <div className="mt-12 rounded-3xl bg-white p-6 shadow-soft md:p-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
               <h3
                 className={`text-2xl font-semibold text-ink-900 transition-all duration-700 ${
-                  animationPhase >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+                  animationPhase >= 1
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-3'
                 }`}
               >
-                Comércio e serviços turísticos
+                Séries consolidadas do turismo
               </h3>
               <p
                 className={`text-sm text-ink-500 transition-all duration-700 delay-150 ${
-                  animationPhase >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+                  animationPhase >= 1
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-3'
                 }`}
               >
-                Comparativo entre indicadores públicos por período
+                Fluxo de visitantes e ocupação hoteleira em evolução.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              {periods.map((period, index) => (
+              {dataPanel.datasets.map((dataset, index) => (
                 <button
-                  key={period.label}
+                  key={dataset.id}
                   type="button"
                   className={`rounded-2xl border px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] transition-all duration-700 ${
-                    selectedPeriod === period.label
+                    selectedDataset === dataset.id
                       ? 'border-ocean-500 bg-ocean-600 text-white shadow-soft'
                       : 'border-sand-200 bg-sand-50 text-ink-600 hover:border-ocean-300'
-                  } ${animationPhase >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+                  } ${
+                    animationPhase >= 2
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-2'
+                  }`}
                   style={{ transitionDelay: `${240 + index * 120}ms` }}
-                  onClick={() => setSelectedPeriod(period.label)}
+                  onClick={() => setSelectedDataset(dataset.id)}
                 >
-                  <span className={`mr-2 inline-flex h-2 w-2 rounded-full ${period.color}`} />
-                  {period.label}
-                  <span className="ml-2 text-[10px] opacity-70">{period.size}</span>
+                  <span className={`mr-2 inline-flex h-2 w-2 rounded-full ${dataset.color}`} />
+                  {dataset.label}
+                  <span className="ml-2 text-[10px] opacity-70">{dataset.size}</span>
                 </button>
               ))}
             </div>
@@ -168,16 +184,16 @@ export default function Stats() {
             <div className="flex flex-wrap items-center gap-6 text-sm text-ink-600">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-ocean-600" />
-                <span className="font-medium">Comércio</span>
+                <span className="font-medium">{currentData.series.primaryLabel}</span>
                 <span className="text-ink-900">
-                  {currentData.commerce[currentData.commerce.length - 1]}
+                  {formatLegendValue(currentData.values.at(-1))}
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-ink-700" />
-                <span className="font-medium">Serviços</span>
+                <span className="font-medium">{currentData.series.secondaryLabel}</span>
                 <span className="text-ink-900">
-                  {currentData.services[currentData.services.length - 1]}
+                  {formatLegendValue(trendValues.at(-1))}
                 </span>
               </div>
             </div>
@@ -202,7 +218,7 @@ export default function Stats() {
                 <rect width="800" height="360" fill="url(#data-grid)" />
 
                 <path
-                  d={generateSmoothPath(currentData.services, maxValue, 320, true)}
+                  d={generateSmoothPath(trendValues, maxValue, 320, true)}
                   fill="rgba(61, 65, 75, 0.08)"
                   className={`transition-all duration-[1600ms] ${
                     chartVisible ? 'opacity-100' : 'opacity-0'
@@ -213,7 +229,7 @@ export default function Stats() {
                   }}
                 />
                 <path
-                  d={generateSmoothPath(currentData.commerce, maxValue, 320, true)}
+                  d={generateSmoothPath(currentData.values, maxValue, 320, true)}
                   fill="rgba(28, 116, 177, 0.12)"
                   className={`transition-all duration-[1600ms] ${
                     chartVisible ? 'opacity-100' : 'opacity-0'
@@ -226,7 +242,7 @@ export default function Stats() {
                 />
 
                 <path
-                  d={generateSmoothPath(currentData.services, maxValue, 320)}
+                  d={generateSmoothPath(trendValues, maxValue, 320)}
                   fill="none"
                   stroke="#3d414b"
                   strokeWidth="2.5"
@@ -241,7 +257,7 @@ export default function Stats() {
                   }}
                 />
                 <path
-                  d={generateSmoothPath(currentData.commerce, maxValue, 320)}
+                  d={generateSmoothPath(currentData.values, maxValue, 320)}
                   fill="none"
                   stroke="#1c74b1"
                   strokeWidth="2.5"
@@ -263,18 +279,18 @@ export default function Stats() {
                   const x =
                     padding +
                     (index / (currentData.dates.length - 1)) * chartWidth
-                  const commerceY =
+                  const primaryY =
                     padding +
-                    (1 - currentData.commerce[index] / maxValue) * chartHeight
-                  const servicesY =
+                    (1 - currentData.values[index] / maxValue) * chartHeight
+                  const trendY =
                     padding +
-                    (1 - currentData.services[index] / maxValue) * chartHeight
+                    (1 - trendValues[index] / maxValue) * chartHeight
 
                   return (
                     <g key={date}>
                       <circle
                         cx={x}
-                        cy={servicesY}
+                        cy={trendY}
                         r={hoveredPoint === index ? 5 : 3}
                         fill="#3d414b"
                         className={`transition-all duration-500 ${
@@ -286,7 +302,7 @@ export default function Stats() {
                       />
                       <circle
                         cx={x}
-                        cy={commerceY}
+                        cy={primaryY}
                         r={hoveredPoint === index ? 5 : 3}
                         fill="#1c74b1"
                         className={`transition-all duration-500 ${
@@ -332,10 +348,10 @@ export default function Stats() {
                       x={
                         56 +
                         (hoveredPoint / (currentData.dates.length - 1)) * 688 -
-                        60
+                        66
                       }
                       y={16}
-                      width="120"
+                      width="132"
                       height="68"
                       fill="white"
                       stroke="#e2e4e8"
@@ -360,7 +376,8 @@ export default function Stats() {
                       fontSize="11"
                       fontWeight="600"
                     >
-                      Comércio: {currentData.commerce[hoveredPoint]}
+                      {currentData.series.primaryLabel}:{' '}
+                      {formatLegendValue(currentData.values[hoveredPoint])}
                     </text>
                     <text
                       x={56 + (hoveredPoint / (currentData.dates.length - 1)) * 688}
@@ -370,7 +387,8 @@ export default function Stats() {
                       fontSize="11"
                       fontWeight="600"
                     >
-                      Serviços: {currentData.services[hoveredPoint]}
+                      {currentData.series.secondaryLabel}:{' '}
+                      {formatLegendValue(trendValues[hoveredPoint])}
                     </text>
                   </g>
                 )}
@@ -379,22 +397,21 @@ export default function Stats() {
           </div>
 
           <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="flex flex-wrap gap-4">
+            <div className="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:gap-4">
               {metrics.map((metric, index) => (
                 <div
                   key={metric.label}
-                  className={`min-w-[140px] rounded-2xl border-2 ${metric.color} bg-white p-4 shadow-card transition-all duration-700 hover:-translate-y-1 ${
+                  className={`min-w-0 transition-all duration-700 sm:min-w-[140px] ${
                     animationPhase >= 3
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-4'
                   }`}
                   style={{ transitionDelay: `${1400 + index * 140}ms` }}
                 >
-                  <div className="flex items-center justify-between text-xs text-ink-400">
-                    <span>{metric.label}</span>
-                    <span>{metric.size}</span>
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-400">
+                    {metric.label} • {metric.size}
                   </div>
-                  <div className="mt-3 text-2xl font-semibold text-ink-900">
+                  <div className="mt-2 text-lg font-semibold text-ink-900 sm:text-2xl">
                     {metric.value}
                   </div>
                 </div>
@@ -410,10 +427,10 @@ export default function Stats() {
             >
               <div className="flex items-center justify-between gap-6">
                 <span className="uppercase tracking-[0.2em] text-sand-200/70">
-                  Registros consolidados
+                  {currentData.summaryLabel}
                 </span>
                 <span className="font-semibold text-white">
-                  {currentData.peak + currentData.average} registros
+                  {summaryValue}
                 </span>
               </div>
               <div className="mt-3 h-2 w-48 overflow-hidden rounded-full bg-ink-700">
@@ -424,6 +441,11 @@ export default function Stats() {
                   style={{ transitionDelay: '2100ms' }}
                 />
               </div>
+              {currentData.summaryNote ? (
+                <p className="mt-3 text-xs text-sand-200/70">
+                  {currentData.summaryNote}
+                </p>
+              ) : null}
             </div>
           </div>
         </div>

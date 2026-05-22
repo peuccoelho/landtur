@@ -47,14 +47,32 @@ export default function Hero() {
             {heroContent.subtitle}
           </p>
         </Reveal>
+        <Reveal delay={0.28}>
+          <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-sand-100/70">
+            {heroContent.metadata.map((item, index) => (
+              <span key={item} className="flex items-center gap-3">
+                <span className="font-medium">{item}</span>
+                {index < heroContent.metadata.length - 1 ? (
+                  <span className="text-sand-100/40">•</span>
+                ) : null}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal delay={0.32}>
+          <p className="mt-6 max-w-2xl text-base text-sand-100/80 sm:text-lg">
+            {heroContent.summary}
+          </p>
+        </Reveal>
         
-        <Reveal delay={0.4}>
+
+        <Reveal delay={0.5}>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button href="#destinos" variant="primary">
+            <Button href={heroContent.primaryCtaHref} variant="primary">
               {heroContent.primaryCta}
               <ArrowDownRight size={18} />
             </Button>
-            <Button href="#sobre" variant="outline">
+            <Button href={heroContent.secondaryCtaHref} variant="outline">
               <PlayCircle size={18} />
               {heroContent.secondaryCta}
             </Button>
