@@ -1,12 +1,10 @@
 export const navLinks = [
-  { label: 'Matéria', href: '#hero' },
   { label: 'Panorama', href: '#sobre' },
   { label: 'Painel', href: '#dados' },
   { label: 'Balancete', href: '#balancete' },
   { label: 'Circuitos', href: '#circuitos' },
   { label: 'Contexto', href: '#analise' },
   { label: 'Alunos', href: '#alunos' },
-  { label: 'Perfil', href: '#perfil' },
   { label: 'Insights', href: '#insights' },
 ]
 
