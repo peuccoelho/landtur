@@ -9,7 +9,7 @@ export const navLinks = [
 ]
 
 export const heroContent = {
-  eyebrow: 'Jornalismo de dados • Turismo de Salvador',
+  eyebrow: 'Turma de jornalismo • UCSAL',
   headline: 'Ah, que bom! \n Você chegou.\n Bem-vindo a Salvador!',
   subtitle:
     'Análise minuciosa cruza os dados orçamentais da prefeitura (SECULT, SUCOP e SEMOP) com os indicadores reais de fluxo de passageiros e ocupação hoteleira entre 2022 e 2025.',
