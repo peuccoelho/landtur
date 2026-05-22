@@ -211,13 +211,13 @@ export const contextAnalysis = {
     {
       id: 'c1',
       title: 'Pelourinho',
-      src: '/imgs/pelourinho.jpg',
+      src: '/imgs/igreja.jpg',
       text: 'Pelourinho: revitalização urbana e hotéis boutique.',
     },
     {
       id: 'c2',
       title: 'Barra',
-      src: '/imgs/faroul-barra.jpg',
+      src: '/imgs/salvador-principal.jpg',
       text: 'Barra e Rio Vermelho: ambulantes regulamentados e ambiente mais seguro.',
     },
     {
