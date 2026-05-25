@@ -27,8 +27,8 @@ export const heroContent = {
   supportingText:
     'O fluxo direto de investimentos liquidados escalou de R$ 10,19 milhões para R$ 28,25 milhões, enquanto o fluxo de visitantes alcançou recorde histórico.',
   image: '/imgs/salvador-principal.jpg',
-  primaryCta: 'Ver painel de métricas',
-  primaryCtaHref: '#dados',
+  primaryCta: 'Ver Entrevista',
+  primaryCtaHref: '/entrevista.html',
   secondaryCta: 'Ver balancete',
   secondaryCtaHref: '#balancete',
 }

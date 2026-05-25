@@ -17,7 +17,7 @@ export default function Hero() {
     >
       <motion.div style={{ y: parallaxY }} className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-right sm:bg-center"
           style={{ backgroundImage: `url(${heroContent.image})` }}
         />
         <div className="absolute inset-0 bg-hero-gradient" />
