@@ -293,6 +293,6 @@ export const teamMembers = [
 
 export const footerInfo = {
   project: 'Especial em jornalismo de dados sobre turismo e economia cultural',
-  credits: 'Universidade Católica do Salvador (UCSAL)',
+  credits: 'Universidade Católica de Salvador (UCSAL)',
   year: new Date().getFullYear(),
 }
