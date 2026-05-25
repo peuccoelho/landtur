@@ -232,23 +232,23 @@ export const contextAnalysis = {
 export const students = [
   {
     id: 's1',
-    name: 'Giuliana Farias',
-    image: '/imgs/Giuliana Farias.png',
-  },
-  {
-    id: 's2',
     name: 'Guilherme Rios',
     image: '/imgs/Guilherme_rios.png',
   },
   {
-    id: 's3',
+    id: 's2',
     name: 'Mirela Portela',
     image: '/imgs/Mirela Portela.png',
   },
   {
-    id: 's4',
+    id: 's3',
     name: 'Pérola Lins',
     image: '/imgs/Pérola Lins.png',
+  },
+  {
+    id: 's4',
+    name: 'Giuliana Farias',
+    image: '/imgs/Giuliana Farias.png',
   },
 ]
 
