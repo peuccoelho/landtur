@@ -291,6 +291,99 @@ export const teamMembers = [
   },
 ]
 
+export const imageReferences = [
+  {
+    id: 'ref-pelourinho',
+    title: 'Pelourinho',
+    description: 'Imagem do Pelourinho',
+    author: 'Autor não identificado',
+    href:
+      'https://blog.viagensmontreal.com/cidades-historicas-do-nordeste-explore-a-cultura-da-regiao/',
+    accessDate: '26 maio 2026',
+    image: '/imgs/pelourinho.jpg',
+  },
+  {
+    id: 'ref-dique',
+    title: 'Dique do Tororó',
+    description: 'Imagem do Dique do Tororó',
+    author: 'Autor não identificado',
+    href:
+      'https://i0.wp.com/jornaldachapada.com.br/wp-content/uploads/2022/09/m00.jpg?fit=800,400&ssl=1&w=640',
+    accessDate: '26 maio 2026',
+    image: '/imgs/dique.jpg',
+  },
+  {
+    id: 'ref-elevador-lacerda',
+    title: 'Elevador Lacerda',
+    description: 'Imagem do Elevador Lacerda',
+    author: 'Autor não identificado',
+    href:
+      'https://partiupelomundo.com/wp-content/uploads/2019/10/por-do-sol-em-salvador-1.jpg',
+    accessDate: '26 maio 2026',
+    image: '/imgs/elevador-lacerda.jpg',
+  },
+  {
+    id: 'ref-farol-barra',
+    title: 'Farol da Barra',
+    description: 'Imagem do Farol da Barra',
+    author: 'Autor não identificado',
+    href:
+      'https://www.facebook.com/hortobelavistasalvador/photos/o-privil%C3%A9gio-de-morar-em-uma-cidade-banhada-pelo-mar/1076921047769996/',
+    accessDate: '26 maio 2026',
+    image: '/imgs/faroul-barra.jpg',
+  },
+  {
+    id: 'ref-igreja-francisco',
+    title: 'Igreja de São Francisco',
+    description: 'Imagem da Igreja de São Francisco',
+    author: 'Autor não identificado',
+    href:
+      'https://guia.melhoresdestinos.com.br/igreja-de-sao-francisco-salvador.html',
+    accessDate: '26 maio 2026',
+    image: '/imgs/igreja.jpg',
+  },
+  {
+    id: 'ref-itapua',
+    title: 'Itapuã',
+    description: 'Imagem de Itapuã',
+    author: 'Autor não identificado',
+    href:
+      'https://aloalobahia.com/fotos/que-salvador-voce-ve-fotografos-escolhem-registros-para-representar-a-cidade-nos-seus-475-anos',
+    accessDate: '26 maio 2026',
+    image: '/imgs/itapua.jpg',
+  },
+  {
+    id: 'ref-rio-vermelho',
+    title: 'Rio Vermelho',
+    description: 'Imagem do Rio Vermelho',
+    author: 'Autor não identificado',
+    href:
+      'https://www.melhoresdestinos.com.br/retrofit-pestana-salvador.html',
+    accessDate: '26 maio 2026',
+    image: '/imgs/rio-vermelho.jpg',
+  },
+  {
+    id: 'ref-hero',
+    title: 'Salvador (foto principal)',
+    description: 'Imagem principal do hero',
+    author: 'Autor não identificado',
+    href:
+      'https://sintibref-ba.org.br/posts/salvador-477-anos-da-primeira-capital-do-brasil',
+    accessDate: '26 maio 2026',
+    image: '/imgs/salvador-principal.jpg',
+  },
+  {
+    id: 'ref-bonfim',
+    title: 'Igreja do Senhor do Bonfim',
+    description: 'Imagem da Igreja do Senhor do Bonfim',
+    author: 'Autor não identificado',
+    href:
+      'https://admin.nazarethvillage.com/naz/igreja-senhor-do-bonfim-salvador-historia.html',
+    accessDate: '26 maio 2026',
+    image: '/imgs/senhor-bonfim.jpg',
+  },
+]
+
 export const footerInfo = {
   project: 'Especial em jornalismo de dados sobre turismo e economia cultural',
   credits: 'Universidade Católica de Salvador (UCSAL)',

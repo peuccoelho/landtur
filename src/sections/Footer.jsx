@@ -8,7 +8,10 @@ export default function Footer() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [subscriptionStatus, setSubscriptionStatus] = useState('idle')
 
-  const usefulLinks = navLinks
+  const usefulLinks = [
+    ...navLinks,
+    { label: 'Referências das imagens', href: '/referencias.html' },
+  ]
   const socialLinks = [
     {
       label: 'WhatsApp',

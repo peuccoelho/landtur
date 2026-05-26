@@ -13,6 +13,7 @@ export default defineConfig({
       input: {
         main: resolve(rootDir, 'index.html'),
         entrevista: resolve(rootDir, 'entrevista.html'),
+        referencias: resolve(rootDir, 'referencias.html'),
       },
     },
   },
